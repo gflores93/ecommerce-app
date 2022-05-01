@@ -1,0 +1,52 @@
+
+.navbar-brand {
+ margin: 0;
+ padding: 0;
+ width: inherit;
+}
+
+.inline {
+    width: 60vw;
+    max-width: 600px;
+}
+
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-icons {
+    i {
+        position: relative;
+        z-index: 10;
+        color: black;
+    }
+
+    i:hover {
+        color: darkgray;
+    }
+}
+
+.icon {
+    padding: 10px;
+    min-width: 40px;
+    left: auto;
+    right: 50px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: start;
+    margin-bottom: 3px;
+    border-radius: 3px;
+    border: none;
+}
+
+.btn-cart {
+    color: whitesmoke;
+}
+
+.btn-cart:hover {
+    color: black;
+}
