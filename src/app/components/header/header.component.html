@@ -4,10 +4,12 @@
             <div class="navbar-brand">
                 <div class="row">
                     <div class="col-xs-12 col-md-2 mt-3 me-3">
-                        <i class="fas fa-shipping-fast fs-2 ms-2">&nbsp;</i>
-                        <strong class="fs-3">Memo's</strong>
+                        <button class="btn-route" [routerLink]="'/'">
+                            <i class="fas fa-shipping-fast fs-2 ms-2">&nbsp;</i>
+                            <strong class="fs-3">Memo's</strong>
+                        </button>
                     </div>
-                    <div class="col-10 col-md-7 mt-3 ms-md-3"> 
+                    <div class="col-10 col-md-7 mt-3 ms-md-3">
                         <form class="inline">
                             <div class="input-icons">
                                 <input type="text" class="input-field" placeholder="Search products">
@@ -16,13 +18,13 @@
                         </form>
                     </div>
                     <div class="col-2 mt-3 ms-auto">
-                        <button class="btn btn-link btn-lg btn-cart float-end">
+                        <button class="btn btn-link btn-lg btn-route float-end" [routerLink]="'/cart'">
                             <i class="fas fa-cart-plus fs-2"></i>
                             <div class="badge bg-danger fs-8">5</div>
                         </button>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

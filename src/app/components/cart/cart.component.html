@@ -1,1 +1,52 @@
-<p>cart works!</p>
+<ng-container *ngIf="true">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive table-striped">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Product Name</th>
+                            <!-- <th>Product Image</th> -->
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of productList">
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.title }}</td>
+                            <!-- <td> <img src="{{ product.image }}" alt="{{ product.title }}"> </td> -->
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ product.quantity }}</td>
+                            <td>{{ product.quantity * product.price }}</td>
+                            <td>
+                                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="false">
+    <div class="container">
+        <div class="card-empty">
+            <h5 class="card-title">My Cart</h5>
+            <div class="center">
+                <img src="https://www.nicepng.com/png/detail/443-4433547_ecommerce-shopping-cart-png-background-image-ecommerce-shopping.png"
+                    alt="shopping cart">
+                <h4>Your cart is empty!</h4>
+                <h6>Add item to it now</h6>
+                <button class="btn btn-primary">Show Now</button>
+            </div>
+        </div>
+    </div>
+</ng-container>

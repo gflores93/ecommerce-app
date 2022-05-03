@@ -23,7 +23,7 @@
     }
 
     i:hover {
-        color: darkgray;
+        color: darkred;
     }
 }
 
@@ -43,10 +43,18 @@
     border: none;
 }
 
-.btn-cart {
+.btn-route {
     color: whitesmoke;
+    background-color: transparent;
+    border: none;
 }
 
-.btn-cart:hover {
+.btn-route:hover {
     color: black;
 }
+
+.btn-route:focus,
+.btn-route:active {
+    outline: none !important;
+    box-shadow: none;
+ }
