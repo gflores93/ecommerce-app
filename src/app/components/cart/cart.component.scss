@@ -15,10 +15,6 @@ h4, h6 {
     text-align: center;
 
     img {
-        // width: 100%;
-        // height: 550px;
-        // object-fit: cover;
-        // object-position: 50% 50%;
         background-color: whitesmoke;
         text-decoration: none;
         color: inherit;
@@ -30,14 +26,7 @@ h4, h6 {
     }
 }
 
-td > img {
-    width: 100%;
-    height: 10vh;
-    object-fit: cover;
-}
-
 .card-table {
-    // position: absolute;
     display: flex;
     flex-direction: column;
     min-width: none;

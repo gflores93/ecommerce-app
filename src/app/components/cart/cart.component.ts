@@ -8,21 +8,28 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class CartComponent implements OnInit {
 
-  public productList: any = [
-    {
-      id: 1,
-      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-      price: 109.95,
-      description: 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-      category: 'men\'s clothing',
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      quantity: 3
-    }
-  ];
-  constructor(private cart: CartService) {
+  public products : any = [];
+  public grandTotal : number = 0;
+
+  constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
+    this.cartService.getProducts()
+    .subscribe(res => {
+      this.products = res;
+      //toDo: group items of the same id and get the quantity and adjust total(price*quantity)
+      this.grandTotal = this.cartService.getTotalPrice();
+    });
   }
 
+  removeItem(item: any) {
+    this.cartService.removeCartItem(item);
+  }
+
+  emptyCart() {
+    this.cartService.removeAllCart();
+  }
+
+  // toDo: modify quantity - add or remove
 }
