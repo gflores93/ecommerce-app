@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
       imgUrl: 'https://www.futspo.de/futuresport/prodpic/ADIZERO-8-0-Football-Receiver-Gloves-Adidas-5-Star-FBADIZ8_b_1.JPG'
     },
     {
-      name: 'Appareal',
+      name: 'Apparel',
       description: 'Jerseys, Pants, Cleats, Gloves, Vests, Belts',
       imgUrl: 'https://www.american-footballshop.de/media/image/product/47561/md/nike-stock-vapor-varsity-practice-football-jersey-schwarz-gr-3xl.jpg'
     },
@@ -37,13 +37,15 @@ export class ProductsComponent implements OnInit {
   ];
   public productList: any;
   public loading: boolean = true;
+  // 1: inserted, 2: already inserted, 3: deleted
+  public alert: any = {};
   constructor(private api: ApiService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loading = true;
     this.api.getProduct()
     .subscribe({
-      next: res => {
+      next: (res) => {
          this.productList = res;
          this.productList.forEach((a: any) => Object.assign(a, {quantity: 1, total: a.price}));
          this.loading = false;
@@ -52,7 +54,13 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    this.cartService.addToCart(product);
+    this.alert = this.cartService.addToCart(product);
+    console.log(this.alert);
+  }
+
+  // used for the alert
+  onDismissError() {
+    this.alert = undefined;
   }
 
 }

@@ -1,0 +1,4 @@
+- Logic to increment and decrease the quantity of a product in the cart
+- Logic to show or hide alerts
+    - the service is the one that has this info, but the alerts should be displayed in the projects view
+- Make the app responsive, including the alerts

@@ -18,7 +18,6 @@ export class CartComponent implements OnInit {
     this.cartService.getProducts()
     .subscribe(res => {
       this.products = res;
-      //toDo: group items of the same id and get the quantity and adjust total(price*quantity)
       this.grandTotal = this.cartService.getTotalPrice();
     });
   }
@@ -32,4 +31,5 @@ export class CartComponent implements OnInit {
   }
 
   // toDo: modify quantity - add or remove
+  // toDo: delete is by id and if the products are not grouped, deleting 1 deletes all of the same type
 }

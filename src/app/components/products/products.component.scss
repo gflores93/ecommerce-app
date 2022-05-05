@@ -10,7 +10,7 @@
     border-radius: .25rem;
 }
 
-.item img{
+.item img {
     width: 64px;
     height: 64px;
 }
@@ -24,7 +24,8 @@
     color: darkred;
 }
 
-.card h5, p {
+.card h5,
+p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -49,12 +50,19 @@
     transform: scale(1.1);
 }
 
-#loading {
-    background: url('../../../assets/loading.gif') no-repeat center center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 9999999;
+.spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+
+}
+
+.alert {
+    margin-top: 5%;
+    position: fixed;
+    width: 20%;
+    top: 0px;
+    right: 0px;
+    z-index: 9999;
 }
