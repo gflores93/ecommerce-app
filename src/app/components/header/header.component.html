@@ -12,7 +12,9 @@
                     <div class="col-10 col-md-7 mt-3 ms-md-3">
                         <form class="inline">
                             <div class="input-icons">
-                                <input type="text" class="input-field" placeholder="Search products">
+                                <input type="text" class="input-field" placeholder="Search products"
+                                name="searchBar" [(ngModel)]="searchText" (keyup)="search($event)"
+                                autocomplete="off" >
                                 <i class="fa fa-search icon"></i>
                             </div>
                         </form>

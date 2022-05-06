@@ -9,6 +9,8 @@ export class CartService {
   public cartItemList: any = [];
   //pass a value and emmit so someone can subscribe to it
   public productList = new BehaviorSubject<any>([]);
+  public search = new BehaviorSubject<string>('');
+
   public alert: any = {
     msg: '',
     type: 0
