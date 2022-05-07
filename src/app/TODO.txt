@@ -1,3 +1,11 @@
 - Logic to increment and decrease the quantity of a product in the cart
     - The metods in the service are already there; unable to reduce when qty=1
 - Make the app responsive, including the alerts
+
+
+
+Technologies used:
+- JavaScript
+- TypeScript
+- Angular 13.1.3
+- Bootstrap 5

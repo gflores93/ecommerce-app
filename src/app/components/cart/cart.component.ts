@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 
 @Component({
@@ -6,20 +7,27 @@ import { CartService } from 'src/app/service/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
-  public products : any = [];
-  public grandTotal : number = 0;
+  public cartSubscription!: Subscription;
+  public products: any = [];
+  public grandTotal: number = 0;
 
   constructor(private cartService: CartService) {
   }
 
   ngOnInit(): void {
-    this.cartService.getProducts()
-    .subscribe(res => {
-      this.products = res;
-      this.grandTotal = this.cartService.getTotalPrice();
-    });
+
+    this.cartSubscription = this.cartService.getProducts()
+      .subscribe(res => {
+        this.products = res;
+        this.grandTotal = this.cartService.getTotalPrice();
+      });
+  }
+
+  // unsubscribe every changing screen 
+  ngOnDestroy() {
+    this.cartSubscription.unsubscribe();
   }
 
   removeItem(item: any) {
@@ -31,5 +39,12 @@ export class CartComponent implements OnInit {
   }
 
   // toDo: modify quantity - add or remove
-  // toDo: delete is by id and if the products are not grouped, deleting 1 deletes all of the same type
+  updateQuantity(event: any, item: any) {
+    console.log('input field: ', event.target.value);
+    let value = isNaN(event?.target?.value) || event?.target?.value <= 0 ? 1 : parseFloat(event?.target?.value);
+    event.target.value = value;
+    console.log('value: ', value);
+    this.cartService.updatetQuantity(item, value);
+  }
+
 }

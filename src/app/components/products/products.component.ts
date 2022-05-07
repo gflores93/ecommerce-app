@@ -71,7 +71,6 @@ export class ProductsComponent implements OnInit {
 
   addToCart(product: any) {
     this.alert = this.cartService.addToCart(product);
-    console.log(this.alert);
   }
 
   // used for the alert

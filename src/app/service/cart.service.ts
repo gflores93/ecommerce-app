@@ -38,7 +38,6 @@ export class CartService {
       this.alert.type = 1; // Inserted 
     }
     this.productList.next(this.cartItemList);
-    // console.log(this.cartItemList);
     return this.alert;
   }
 
@@ -57,15 +56,10 @@ export class CartService {
     this.productList.next(this.cartItemList);
   }
 
-  incrementQuantity(item: any) {
-    item.quantity++;
+  updatetQuantity(item: any, value: number) {
+    item.quantity = value;
     item.total = Math.round(item.quantity * item.price * 100) / 100; 
+    this.productList.next(this.cartItemList);
   }
 
-  decreaseQuantity(item: any) {
-    if(item.quantity > 1) {
-      item.quantity--;
-      item.total = Math.round(item.quantity * item.price * 100) / 100; 
-    }
-  }
 }
