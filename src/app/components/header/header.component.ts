@@ -25,4 +25,9 @@ export class HeaderComponent implements OnInit {
     this.cartService.search.next(this.searchText);
   }
 
+  clearSearch() {
+    this.searchText = '';
+    this.cartService.search.next(this.searchText);
+  }
+
 }
