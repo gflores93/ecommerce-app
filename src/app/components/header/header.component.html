@@ -20,7 +20,7 @@
                         </form>
                     </div>
                     <div class="col-2 mt-3 ms-auto">
-                        <button class="btn btn-link btn-lg btn-route float-end" routerLink="cart">
+                        <button class="btn btn-link btn-lg btn-route float-end" routerLink="cart" (click)="searchText = ''">
                             <i class="fas fa-cart-plus fs-2"></i>
                             <div class="badge bg-danger fs-8">{{ totalItem }}</div>
                         </button>
