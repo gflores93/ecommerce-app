@@ -7,9 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
 
   public cartItemList: any = [];
-  //pass a value and emmit so someone can subscribe to it
+  // Header, Products and Cart component subscribe to getProducts() which returns this subject as observable
   public productList = new BehaviorSubject<any>([]);
-  public search = new BehaviorSubject<string>('');
+  // Header component emits search text and Product component is subscribed to it to filter products
+  public search = new BehaviorSubject<string>(''); 
 
   public alert: any = {
     msg: '',
@@ -19,8 +20,8 @@ export class CartService {
   constructor() { }
 
   /* 
-  the subscrition is done to this method, and on every .next done to productList 
-  the subscribers would receive the new value of cartItemList
+  This method returns an observable, so subscriptions will be done to an Observable instead of a BehaviorSubject
+  you can't send values to an Observable using next() method
   */
   getProducts() {
     return this.productList.asObservable();
@@ -46,6 +47,7 @@ export class CartService {
     return Math.round(grandTotal * 100) / 100;
   }
 
+  // Whenever the data is modified .next() is executed to emit the updated list to the subscribers 
   removeCartItem(product: any) {
     this.cartItemList = this.cartItemList.filter((a: any) => a.id != product.id);
     this.productList.next(this.cartItemList);
@@ -56,7 +58,7 @@ export class CartService {
     this.productList.next(this.cartItemList);
   }
 
-  updatetQuantity(item: any, value: number) {
+  updateQuantity(item: any, value: number) {
     item.quantity = value;
     item.total = Math.round(item.quantity * item.price * 100) / 100; 
     this.productList.next(this.cartItemList);

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/service/cart.service';
 
@@ -9,9 +9,11 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class CartComponent implements OnInit, OnDestroy {
 
+  @ViewChild('closeBtn') public closeBtn!: ElementRef;
   public cartSubscription!: Subscription;
   public products: any = [];
   public grandTotal: number = 0;
+  public message: string = '';
 
   constructor(private cartService: CartService) {
   }
@@ -38,13 +40,18 @@ export class CartComponent implements OnInit, OnDestroy {
     this.cartService.removeAllCart();
   }
 
-  // toDo: modify quantity - add or remove
   updateQuantity(event: any, item: any) {
-    console.log('input field: ', event.target.value);
-    let value = isNaN(event?.target?.value) || event?.target?.value <= 0 ? 1 : parseFloat(event?.target?.value);
+    let value = isNaN(event?.target?.value) || event?.target?.value <= 0 ? 1 : parseInt(event?.target?.value);
     event.target.value = value;
-    console.log('value: ', value);
-    this.cartService.updatetQuantity(item, value);
+    this.cartService.updateQuantity(item, value);
+  }
+
+  confirmOrder() {
+    this.message = 'Thanks for buying!';
+    setTimeout(() => {
+      this.closeBtn.nativeElement.click();
+      this.cartService.removeAllCart();
+    }, 2000);
   }
 
 }

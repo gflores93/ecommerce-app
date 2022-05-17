@@ -1,5 +1,5 @@
 <div class="card-top container-fluid">
-    <div class="d-flex">
+    <div class="d-none d-lg-flex">
         <div class="item mt-2" *ngFor="let category of categories">
             <a (click)="filterByCategory(category.category)">
                 <img src="{{ category.imgUrl }}" alt="{{ category.description }}">
@@ -11,7 +11,7 @@
 
 <div class="container" *ngIf="!loading">
     <div class="row">
-        <div class="card col-md-3" *ngFor="let item of categoryList | filter:searchKey:'title'">
+        <div class="card col-sm-12 col-md-6 col-lg-4" *ngFor="let item of categoryList | filter:searchKey:'title'">
             <img class="mx-auto" src="{{ item.image }} " alt="">
             <h5> {{ item.title }} </h5>
             <p> {{ item.description }} </p>

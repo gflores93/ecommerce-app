@@ -34,7 +34,7 @@ p {
 
 .card {
     padding: 20px;
-    margin: 50px;
+    // margin: 20px;
     border: none;
 }
 
@@ -59,10 +59,10 @@ p {
 }
 
 .alert {
-    margin-top: 5%;
+    margin-bottom: 1%;
     position: fixed;
-    width: 20%;
-    top: 0px;
+    min-width: 320px;
+    bottom: 0px;
     right: 0px;
     z-index: 9999;
 }
