@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
+import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-products',
@@ -40,7 +41,11 @@ export class ProductsComponent implements OnInit {
   public loading: boolean = true;
   // 1: inserted, 2: already inserted, 3: deleted
   public alert: any = {};
-  constructor(private api: ApiService, private cartService: CartService) { }
+  constructor(
+    private api: ApiService,
+    private cartService: CartService,
+    private searchService: SearchService
+    ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -58,7 +63,7 @@ export class ProductsComponent implements OnInit {
     });
 
     // subscribe to the observable that is emmited from the header component
-    this.cartService.search.subscribe((val: string) => {
+    this.searchService.searchText.subscribe((val: string) => {
       this.searchKey = val;
     })
   }

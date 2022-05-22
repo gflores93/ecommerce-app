@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart.service';
+import { SearchService } from 'src/app/service/search.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,10 @@ export class HeaderComponent implements OnInit {
   public totalItem: number = 0;
   public searchText: string = '';
 
-  constructor(private cartService: CartService) { }
+  constructor(
+    private cartService: CartService,
+    private searchService: SearchService
+    ) { }
 
   ngOnInit(): void {
     this.cartService.getProducts()
@@ -22,12 +26,12 @@ export class HeaderComponent implements OnInit {
 
   search(event: any) {
     this.searchText = (event.target as HTMLInputElement).value;
-    this.cartService.search.next(this.searchText);
+    this.searchService.updateText(this.searchText);
   }
 
   clearSearch() {
     this.searchText = '';
-    this.cartService.search.next(this.searchText);
+    this.searchService.updateText(this.searchText);
   }
 
 }

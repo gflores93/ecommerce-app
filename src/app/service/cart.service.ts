@@ -9,8 +9,6 @@ export class CartService {
   public cartItemList: any = [];
   // Header, Products and Cart component subscribe to getProducts() which returns this subject as observable
   public productList = new BehaviorSubject<any>([]);
-  // Header component emits search text and Product component is subscribed to it to filter products
-  public search = new BehaviorSubject<string>(''); 
 
   public alert: any = {
     msg: '',
