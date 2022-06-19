@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 import { SearchService } from 'src/app/service/search.service';
+import { ProductInterface } from 'src/app/types/product.interface';
 
 @Component({
   selector: 'app-products',
@@ -35,8 +36,8 @@ export class ProductsComponent implements OnInit {
       category: 'electronics'
     },
   ];
-  public productList: any;
-  public categoryList: any;
+  public productList!: ProductInterface[];
+  public categoryList!: ProductInterface[];
   public searchKey: string = '';
   public loading: boolean = true;
   // 1: inserted, 2: already inserted, 3: deleted
@@ -54,9 +55,11 @@ export class ProductsComponent implements OnInit {
       next: (res) => {
          this.productList = res;
          this.categoryList = res;
-         this.productList.forEach((a: any) => {
+         this.productList.forEach((a: ProductInterface) => {
           if(a.category.includes('clothing')) a.category = 'fashion';
-          Object.assign(a, {quantity: 1, total: a.price}); //assign extra properties to each object
+          // Object.assign(a, {quantity: 1, total: a.price}); //assign extra properties to each object
+          a.quantity = 1;
+          a.total = a.price;
          });
         },
       complete: () => { this.loading = false; }

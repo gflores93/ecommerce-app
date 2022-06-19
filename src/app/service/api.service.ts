@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { ProductInterface } from '../types/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,8 @@ export class ApiService {
   getProduct() {
     return this.http.get<any>(this.apiUrl)
     .pipe(
-      map((res: any) => {
+      map((res: ProductInterface[]) => {
+        console.log(res);
         return res;
       })
     );
